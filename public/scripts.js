@@ -17,3 +17,8 @@ socket.on('chat message', function(msg) {
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
 });
+
+function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+} 
