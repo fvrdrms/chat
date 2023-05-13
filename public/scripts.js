@@ -19,6 +19,17 @@ socket.on('chat message', function(msg) {
 });
 
 function darkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-} 
+  // var element = document.body;
+  document.body.classList.toggle("dark-mode");
+  document.getElementById('darkModeButton').classList.toggle("darkModeButton-light");
+  }
+  
+// var darkmodeButtonToggle = document.getElementById('darkMode').src;
+// if (darkModeOn = true) {
+//   document.getElementById('darkMode').classList.toggle("darkMode-light");
+//   var darkModeOn = false;
+// }
+// else {
+// document.getElementById('darkMode').classList.toggle("darkMode-dark");
+// var darkModeOn = true;
+// }

@@ -10,6 +10,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
     res.sendFile(__dirname + '/styles.css');
     res.sendFile(__dirname + '/scripts.js');
+    res.sendFile(__dirname + '/darktoggle-dark.svg');
+    res.sendFile(__dirname + '/darktoggle-light.svg');
   });
   
 io.on('connection', (socket) => {

@@ -5,9 +5,33 @@ body {
 }
 
 .dark-mode {
-    background-color: #121212;
+    background-color: #221f1f;
     color: white;
   }
+  
+
+
+#darkModeButton {
+    background-image: url(darktoggle-dark.svg);
+    background-color: transparent;
+    background-repeat: none;
+    background-size: 30px;
+    border: none;
+    float: right; 
+    width: 30px;
+    height: 30px;
+}
+
+#darkModeButton.darkModeButton-light {
+    background-image: url(darktoggle-light.svg);
+    background-color: transparent;
+    background-repeat: none;
+    background-size: 30px;
+    border: none;
+    float: right; 
+    width: 30px;
+    height: 30px;
+}
 
 #form {
     background: rgba(0, 0, 0, 0.15); 
