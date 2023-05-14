@@ -50,23 +50,28 @@ app.get("/chat", (req, res) => {
   res.render("chat")
 })
 
+app.set('views', path.join(__dirname, 'views'))
+
 
 app.post("/auth/register", (req, res) => {    
   const { name, email, password, password_confirm } = req.body
-  // db.query('SELECT email FROM users WHERE email = ?', [email], async (error, result) => {
-    let hashedPassword = bcrypt.hash(password, 8)
-    // if(error){
-    //       console.log(error)
-    //   }
-    //   if( result.length > 0 ) {
-    //       return res.render('register', {
-    //           message: 'This email is already in use'
-    //       })
-    //   } else if(password !== password_confirm) {
-    //       return res.render('register', {
-    //           message: 'Password Didn\'t Match!'
-    //       })
-    //   }
+  db.query('SELECT email FROM users WHERE email = ?', [email], async (error, result) => {
+    if (error) {
+          console.log(error)
+      }
+    if ( result.length > 0 ) {
+          return res.render('register', {
+              message: 'This email is already in use'
+          })
+      } 
+    else if(password !== password_confirm) {
+          return res.render('register', {
+              message: 'Password Didn\'t Match!'
+          })
+      }
+      
+      let hashedPassword = bcrypt.hash(password, 8)
+      
     //
     // bcrypt
     // .genSalt(saltRounds)
@@ -80,20 +85,18 @@ app.post("/auth/register", (req, res) => {
     // .catch(err => console.error(err.message))
      
       db.query('INSERT INTO users SET?', {name: name, email: email, password: hashedPassword}, (err, result) => {
-          // if(error) {
-          //     console.log(error)
-          // } else {
-          //     return res.render('register', {
-          //         message: 'User registered!'
-          //     })
-          // }
+        if (error){
+          console.log(error)
+              }    
+        if(error) {
+              console.log(error)
+          } else {
+              return res.render('register', {
+                  message: 'User registered!'
+              })
+          }
       })        
   })
-
-    
-
-
-
 
 // other imports
 
@@ -116,4 +119,4 @@ socket.on('disconnect', () => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-});
+});})

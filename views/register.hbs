@@ -23,8 +23,12 @@
         <div class="form__group">
             <input type="password" placeholder="confirm password" class="form__input" autocomplete="off" name="password-confirm" required/>
         </div>
-
-        <button class="btn" type="submit" onclick="this.disabled=true">register</button>
+        <button class="btn" type="submit">register</button>
+        <div class="form__group">
+            {{#if message }}
+                <p class="error">{{message}}</p>
+            {{/if}}
+        </div>
     </form>
 </div>
 </body>

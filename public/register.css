@@ -74,6 +74,29 @@ input:focus::placeholder {
     }
 }
 
+.error {
+    display: block;
+    background-color: red;
+    font-family: "Roboto";
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* font-family: "Roboto"; */
+    text-align: center;
+    -webkit-appearance: none;
+    appearance: auto;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    
+    
+    &:focus {
+        background: darken(#fff, 3%);
+    }
+}
+
 .btn {
     display: block;
     width: 100%;
