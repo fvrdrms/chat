@@ -9,22 +9,22 @@
 <div class="user">
     <form class="form" action="/auth/register" method="POST">
         <div class="form__group">
-            <input type="text" placeholder="username" class="form__input" autocomplete="off" name="name"/>
+            <input type="text" placeholder="username" class="form__input" autocomplete="off" name="name" required/>
         </div>
         
         <div class="form__group">
-            <input type="text" placeholder="email" class="form__input" autocomplete="off" name="email"/>
+            <input type="text" placeholder="email" class="form__input" autocomplete="off" name="email" required/>
         </div>
         
         <div class="form__group">
-            <input type="password" placeholder="password" class="form__input" autocomplete="off" name="password"/>
+            <input type="password" placeholder="password" class="form__input" autocomplete="off" name="password" required/>
         </div>
 
         <div class="form__group">
-            <input type="password" placeholder="confirm password" class="form__input" autocomplete="off" name="password-confirm"/>
+            <input type="password" placeholder="confirm password" class="form__input" autocomplete="off" name="password-confirm" required/>
         </div>
 
-        <button class="btn" type="submit">register</button>
+        <button class="btn" type="submit" onclick="this.disabled=true">register</button>
     </form>
 </div>
 </body>
