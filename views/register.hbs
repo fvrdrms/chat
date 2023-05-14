@@ -2,35 +2,26 @@
 <html lang="en">
 <head>    
 <link rel="stylesheet" href="/register.css">
-<script>
-const button = document.querySelector('.btn')
-const form   = document.querySelector('.form')
-
-button.addEventListener('click', function() {
-   form.classList.add('form--no') 
-});
-</script>
 <title>register</title>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
 <body>
 <div class="user">
-    
     <form class="form" action="/auth/register" method="POST">
         <div class="form__group">
-            <input type="text" placeholder="username" class="form__input" name="name"/>
+            <input type="text" placeholder="username" class="form__input" autocomplete="off" name="name"/>
         </div>
         
         <div class="form__group">
-            <input type="text" placeholder="email" class="form__input" name="email"/>
+            <input type="text" placeholder="email" class="form__input" autocomplete="off" name="email"/>
         </div>
         
         <div class="form__group">
-            <input type="password" placeholder="password" class="form__input" name="password"/>
+            <input type="password" placeholder="password" class="form__input" autocomplete="off" name="password"/>
         </div>
 
         <div class="form__group">
-            <input type="password" placeholder="confirm password" class="form__input" name="password-confirm"/>
+            <input type="password" placeholder="confirm password" class="form__input" autocomplete="off" name="password-confirm"/>
         </div>
 
         <button class="btn" type="submit">register</button>

@@ -31,59 +31,68 @@ db.connect((error) => {
       console.log("MySQL connected!")
   }
 })
+
+app.listen(4000, ()  => {
+  console.log('Listening on *4000');
+});
 const path = require("path")
-
-const publicDir = path.join(__dirname, './public')
-
-app.use(express.static(publicDir))
 
 app.get("/", (req, res) => {
   res.render("index")
 })
 
 app.get("/register", (req, res) => {
+  // res.sendFile(__dirname + '/socket.io/socket.io.js');
   res.render("register")
+})
+
+app.get("/chat", (req, res) => {
+  res.render("chat")
 })
 
 
 app.post("/auth/register", (req, res) => {    
   const { name, email, password, password_confirm } = req.body
-  app.use(bodyParser.json());
-  console.log(name);
-  console.log(password);
-  db.query('SELECT email FROM users WHERE email = ?', [email], async (error, req, res) => {
-    // if (error){
-    //   console.log(error)
-    // }
-    //   if ( res.length > 0 ) {
-    //     return res.render('register', {
-    //         message: 'This email is already in use'
-    //     })
-    // } else if(password !== password_confirm) {
-    //     return res.render('register', {
-    //         message: 'Passwords do not match!'
-    //     })
-    // }
-    
-   let hashedPassword = bcrypt
-    .genSalt(saltRounds)
-    .then(salt => {
-      console.log('Salt: ', salt)
-      return bcrypt.hash(password, salt)
-    })
-    
-    db.query('INSERT INTO users SET?', {name: name, email: email, password: hashedPassword}, (err, res) => {
-        // if (error) {
-        //     console.log(error)
-        // } else {
-        //     return res.render('register', {
-        //         message: 'User registered!'
-        //     })
-        // }
-    })
- })
+  // db.query('SELECT email FROM users WHERE email = ?', [email], async (error, result) => {
+    let hashedPassword = bcrypt.hash(password, 8)
+    // if(error){
+    //       console.log(error)
+    //   }
+    //   if( result.length > 0 ) {
+    //       return res.render('register', {
+    //           message: 'This email is already in use'
+    //       })
+    //   } else if(password !== password_confirm) {
+    //       return res.render('register', {
+    //           message: 'Password Didn\'t Match!'
+    //       })
+    //   }
+    //
+    // bcrypt
+    // .genSalt(saltRounds)
+    // .then(salt => {
+    //   console.log('Salt: ', salt)
+    //   return bcrypt.hash(password, salt)
+    // })
+    // .then(hash => {
+    //   console.log('Hash: ', hash)
+    // })
+    // .catch(err => console.error(err.message))
+     
+      db.query('INSERT INTO users SET?', {name: name, email: email, password: hashedPassword}, (err, result) => {
+          // if(error) {
+          //     console.log(error)
+          // } else {
+          //     return res.render('register', {
+          //         message: 'User registered!'
+          //     })
+          // }
+      })        
+  })
 
-})
+    
+
+
 
 
 // other imports
@@ -107,8 +116,4 @@ socket.on('disconnect', () => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-});
-  
-app.listen(3000, ()  => {
-    console.log('Listening on *3000');
 });
