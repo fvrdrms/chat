@@ -10,29 +10,30 @@ button.addEventListener('click', function() {
    form.classList.add('form--no') 
 });
 </script>
+<title>register</title>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
 <body>
 <div class="user">
     
-    <form class="form">
+    <form class="form" action="/auth/register" method="POST">
         <div class="form__group">
-            <input type="text" placeholder="username" class="form__input" />
+            <input type="text" placeholder="username" class="form__input" name="name"/>
         </div>
         
         <div class="form__group">
-            <input type="text" placeholder="email" class="form__input" />
+            <input type="text" placeholder="email" class="form__input" name="email"/>
         </div>
         
         <div class="form__group">
-            <input type="password" placeholder="password" class="form__input" />
+            <input type="password" placeholder="password" class="form__input" name="password"/>
         </div>
 
         <div class="form__group">
-            <input type="password" placeholder="confirm password" class="form__input" />
+            <input type="password" placeholder="confirm password" class="form__input" name="password-confirm"/>
         </div>
 
-        <button class="btn" type="button">register</button>
+        <button class="btn" type="submit">register</button>
     </form>
 </div>
 </body>
