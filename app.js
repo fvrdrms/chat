@@ -7,14 +7,30 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+app.set('view engine', 'hbs')
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-    res.sendFile(__dirname + '/styles.css');
-    res.sendFile(__dirname + '/scripts.js');
-    res.sendFile(__dirname + '/darktoggle-dark.svg');
-    res.sendFile(__dirname + '/darktoggle-light.svg');
-  });
+// other imports
+const path = require("path")
+
+const publicDir = path.join(__dirname, './public')
+
+app.use(express.static(publicDir))
+
+app.get("/", (req, res) => {
+  res.render("index")
+})
+
+app.get("/register", (req, res) => {
+  res.render("register")
+})
+
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/index.html');
+//     res.sendFile(__dirname + '/styles.css');
+//     res.sendFile(__dirname + '/scripts.js');
+//     res.sendFile(__dirname + '/darktoggle-dark.svg');
+//     res.sendFile(__dirname + '/darktoggle-light.svg');
+//   });
   
 io.on('connection', (socket) => {
 console.log('a user connected');
@@ -46,6 +62,6 @@ db.connect((error) => {
     }
 })
   
-server.listen(3000, ()  => {
+app.listen(3000, ()  => {
     console.log('Listening on *3000');
 });
