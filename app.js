@@ -32,10 +32,10 @@ socket.on('disconnect', () => {
 dotenv.config({ path: './.env'})
 
 const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DATABASE
 })
 
 db.connect((error) => {
